@@ -20,6 +20,10 @@ export const AuthContextProvider = ({ children }) => {
 
   const [user, setUser] = useState({});
 
+  const signIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
@@ -44,7 +48,9 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     //export functions
-    <AuthContext.Provider value={{ googleSignIn, logOut, user, createUser }}>
+    <AuthContext.Provider
+      value={{ googleSignIn, logOut, user, createUser, signIn }}
+    >
       {children}
     </AuthContext.Provider>
   );
