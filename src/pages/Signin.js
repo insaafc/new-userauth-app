@@ -4,6 +4,8 @@ import { UserAuth } from "../context/Auth-context";
 import { Link, useNavigate } from "react-router-dom";
 
 const Signin = () => {
+  const { signin } = UserAuth();
+
   const [email, setEmail] = useState("");
 
   const [password, setPassword] = useState("");
@@ -11,7 +13,7 @@ const Signin = () => {
   const [error, setError] = useState("");
 
   //import function in order to have access to it
-  const { createUser } = UserAuth;
+  const { createUser } = UserAuth();
 
   const { googleSignIn, user } = UserAuth();
   const navigate = useNavigate();
@@ -29,7 +31,7 @@ const Signin = () => {
     e.preventDefault();
     setError("");
     try {
-      await createUser(email, password);
+      await signin, createUser(email, password);
       navigate("/account");
     } catch (e) {
       setError(e.message);
