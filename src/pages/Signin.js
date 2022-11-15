@@ -1,9 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { GoogleButton } from "react-google-button";
 import { UserAuth } from "../context/Auth-context";
 import { Link, useNavigate } from "react-router-dom";
 
 const Signin = () => {
+  const [email, setEmail] = useState("");
+
+  const [password, setPassword] = useState("");
+
+  const [error, setError] = useState("");
+
+  //import function in order to have access to it
+  const { createUser } = UserAuth;
+
   const { googleSignIn, user } = UserAuth();
   const navigate = useNavigate();
 
@@ -16,6 +25,7 @@ const Signin = () => {
   };
 
   const handleSubmit = async (e) => {
+    //use below so the whole page doesnt submit all the time
     e.preventDefault();
     setError("");
     try {

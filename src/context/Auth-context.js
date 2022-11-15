@@ -7,8 +7,6 @@ import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../firebase";
 
@@ -24,7 +22,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    // signInWithPopup(auth, provider);
+    signInWithPopup(auth, provider);
     signInWithRedirect(auth, provider);
   };
 
