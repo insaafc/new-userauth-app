@@ -15,6 +15,11 @@ import { auth } from "../firebase";
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+  //Email and Password
+  const createUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
   const [user, setUser] = useState({});
 
   const googleSignIn = () => {
@@ -38,7 +43,8 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ googleSignIn, logOut, user }}>
+    //export functions
+    <AuthContext.Provider value={{ googleSignIn, logOut, user, createUser }}>
       {children}
     </AuthContext.Provider>
   );
