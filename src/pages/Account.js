@@ -1,12 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/Auth-context";
 
 const Account = () => {
   const { logOut, user } = UserAuth();
+  const navigate = useNavigate();
 
   const handleSignOut = async () => {
     try {
       await logOut();
+      navigate("/");
+      console.log("You are logged out");
     } catch (error) {
       console.log(error);
     }
@@ -18,7 +22,7 @@ const Account = () => {
       <div>
         <p>Welcome, {user?.displayName}</p>
       </div>
-      <p>User Email:</p>
+      <p>User Email: {user && user.email}</p>
       <button onClick={handleSignOut} className="border py-2 px-5 mt-10">
         Logout
       </button>
