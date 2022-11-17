@@ -4,7 +4,7 @@ import { UserAuth } from "../context/Auth-context";
 import { Link, useNavigate } from "react-router-dom";
 
 const Signin = () => {
-  const { signin } = UserAuth();
+  const { signIn } = UserAuth();
 
   const [email, setEmail] = useState("");
 
@@ -31,7 +31,7 @@ const Signin = () => {
     e.preventDefault();
     setError("");
     try {
-      await signin, createUser(email, password);
+      await signIn(email, password);
       navigate("/account");
     } catch (e) {
       setError(e.message);
@@ -49,7 +49,7 @@ const Signin = () => {
     <div className="row">
       <div>
         <div className="col-12">
-          <h1 className="text-center text-3l font-bold py-8">
+          <h1 className="text-center text-3l font-bold py-8 pt-4">
             Sign in to your account{" "}
           </h1>
         </div>
@@ -84,8 +84,11 @@ const Signin = () => {
             </button>
           </form>
         </div>
-        <div className="center-button col-12 text-center max-w[240px] m-auto py-4">
+        <div className="text-center mx-auto my-16 p-4">
+          {" "}
           ------------ OR ------------
+        </div>
+        <div className="text-center mx-auto my-16 p-4 center-button col-12 text-center max-w[240px] m-auto py-4">
           <GoogleButton onClick={handleGoogleSignIn} />
         </div>
       </div>
