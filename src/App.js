@@ -4,9 +4,8 @@ import Navbar from "./components/Navbar";
 import Protected from "./components/Protected";
 import { AuthContextProvider } from "./context/Auth-context";
 import Account from "./pages/Account";
-import Home from "./pages/Home";
-import Signin from "./pages/Signin";
-import Signup from "./pages/Signup";
+import Signin from "./components/Signin";
+import Signup from "./components/Signup";
 import "./Design/styles/style.scss";
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Signin />} />
-            {/* <Route path="/signin" element={<Signin />} /> */}
             <Route path="/signup" element={<Signup />} />
             <Route
               path="/account"

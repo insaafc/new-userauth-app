@@ -31,10 +31,10 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    signOut(auth);
+    return signOut(auth);
   };
 
-  //put into useeffect in order for it to only run once when the component mounts
+  //put into useEffect in order for it to only run once when the component mounts
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
