@@ -38,6 +38,7 @@ const Signup = () => {
         </p>
       </div>
       <form onSubmit={handleSubmit}>
+        {error && <p className="text-red-500">{error}</p>}
         <div className="flex flex-col p-2">
           <label className="p-2 font-medium">Email Address</label>
           <input

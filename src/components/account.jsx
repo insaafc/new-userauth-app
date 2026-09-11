@@ -2,7 +2,7 @@ import React from "react";
 import { UserAuth } from "../context/Auth-context";
 import { useNavigate } from "react-router-dom";
 
-function account() {
+function Account() {
   const { user, logout } = UserAuth();
   const navigate = useNavigate();
 
@@ -27,4 +27,4 @@ function account() {
   );
 }
 
-export default account;
+export default Account;

@@ -20,7 +20,7 @@ const Navbar = () => {
         <button onClick={handleSignOut}>Logout</button>
       ) : (
         <p>
-          <Link style={{ color: "#fff" }} to="/signin">
+          <Link style={{ color: "#fff" }} to="/">
             Sign in
           </Link>
         </p>
