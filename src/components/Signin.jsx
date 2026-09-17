@@ -1,6 +1,18 @@
 import React, { useState } from "react";
 import { UserAuth } from "../context/Auth-context";
 import { Link, useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button"
+import {
+  Card,  
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
 
 const Signin = () => {
   const { signIn, googleSignIn } = UserAuth();
@@ -35,55 +47,48 @@ const Signin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-sm bg-white rounded-[2rem] shadow-xl overflow-hidden">
-        <div className="bg-blue-800 h-32 flex items-center justify-center rounded-b-[2.5rem]">
-          
-        </div>
-
-        <div className="px-8 py-8 border-b border-gray-200">
-          <h1 className="text-xl mt-10 font-bold text-center text-gray-800 mb-6">
-            Sign In
-          </h1>
-
-          {error && (
-            <p className="text-red-500 text-sm text-center mb-4">{error}</p>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">
-                Email
-              </label>
-              <input
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-10">     
+    <Card className="w-full max-w-sm">
+      <CardHeader>
+        <CardTitle>Login to your account</CardTitle>
+        <CardDescription>
+          Enter your email below to login to your account
+        </CardDescription>        
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="flex flex-col gap-6">
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
-                placeholder="login@abcd.com"
-                className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-800"
+                placeholder="m@example.com"
+                required
               />
             </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">
-                Password
-              </label>
-              <input
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                placeholder="••••••••"
-                className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-800"
-              />
+            <div className="grid gap-2">
+              <div className="flex items-center">
+                <Label htmlFor="password">Password</Label>
+                <a
+                  href="#"
+                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                >
+                  Forgot your password?
+                </a>
+              </div>
+              <Input id="password" type="password" required  onChange={(e) => setPassword(e.target.value)}/>
             </div>
-
-            <button
-              type="submit"
-              className="w-full bg-blue-800 hover:bg-blue-900 text-white font-semibold rounded-lg py-3 mt-2 transition-colors"
-            >
-              Sign In
-            </button>
-          </form>
-
-          <div className="flex items-center gap-3 my-6">
+          </div>
+        </form>
+      </CardContent>
+      <CardFooter className="flex-col gap-2">
+        <Button type="submit" className="w-full">
+          Login
+        </Button>        
+      </CardFooter>
+      <div className="flex items-center gap-3 my-6">
             <div className="flex-1 h-px bg-gray-200" />
             <span className="text-xs text-gray-400">Or</span>
             <div className="flex-1 h-px bg-gray-200" />
@@ -122,10 +127,9 @@ const Signin = () => {
               Sign up
             </Link>
           </p>
-        </div>
-      </div>
+    </Card>
     </div>
-  );
-};
+  )
+}
 
 export default Signin;
